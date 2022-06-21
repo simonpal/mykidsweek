@@ -1,20 +1,19 @@
 import React, { useEffect, useMemo, useState } from "react";
-import getISOWeek from "date-fns/getISOWeek";
-import DateSelector from "./components/DateSelector";
 import styled from "styled-components";
 import WeekTypeSelector from "./components/WeekTypeSelector";
-import ResultMessage from "./components/ResultMessage";
 import { WeekDay, WeekDaySelector } from "./components/WeekDaySelector";
-import { addDays, addYears, startOfMonth, subDays } from "date-fns";
-import {
-  Calendar,
-  Views,
-  DateLocalizer,
-  momentLocalizer,
-} from "react-big-calendar";
+import { addYears, subDays } from "date-fns";
+import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { getMonthlyEvents } from "./utils";
+
+moment.locale("sv", {
+  week: {
+    dow: 1,
+    doy: 4,
+  },
+});
 
 const localizer = momentLocalizer(moment);
 
@@ -41,11 +40,11 @@ function App() {
   const [startOfWeek, setStartOfWeek] = useState<WeekDay>(
     localStartDay || "Monday"
   );
-  const [checkDate, setCheckDate] = useState<Date>(new Date());
-  const [haveKids, setHaveKids] = useState<boolean>(false);
-  const [selectedWeek, setSelectedWeek] = useState<number>(
-    getISOWeek(new Date())
-  );
+  // const [checkDate, setCheckDate] = useState<Date>(new Date());
+  // const [haveKids, setHaveKids] = useState<boolean>(false);
+  // const [selectedWeek, setSelectedWeek] = useState<number>(
+  //   getISOWeek(new Date())
+  // );
 
   const events = useMemo(
     () =>
@@ -75,20 +74,20 @@ function App() {
     }
   }, [localSetting]);
 
-  useEffect(() => {
-    const weekNr = getISOWeek(checkDate);
-    const typeResult = weekNr % 2 === 0 ? WeekTypes.Even : WeekTypes.Odd;
-    console.log(weekNr, typeResult);
-    setSelectedWeek(weekNr);
-    setHaveKids(typeResult === weekType);
-  }, [checkDate, weekType]);
+  // useEffect(() => {
+  //   const weekNr = getISOWeek(checkDate);
+  //   const typeResult = weekNr % 2 === 0 ? WeekTypes.Even : WeekTypes.Odd;
+  //   console.log(weekNr, typeResult);
+  //   setSelectedWeek(weekNr);
+  //   setHaveKids(typeResult === weekType);
+  // }, [checkDate, weekType]);
 
   return (
     <AppWrapper>
       <h1>Har jag barnen?</h1>
       <h4>Min vecka startar på dag</h4>
       <WeekDaySelector weekDay={startOfWeek} onChange={handleDayChange} />
-      <h4>Jag får barn på jämn/ojämn vecka</h4>
+      <h4>Jag får barn på jämn/udda vecka</h4>
       <WeekTypeSelector
         isEven={weekType === WeekTypes.Even}
         handleWeekChange={handleWeekChange}
