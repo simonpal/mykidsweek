@@ -12,6 +12,7 @@ const WeekSelector = styled.div<Partial<WeekTypeSelectorProps>>`
   max-width: 100%;
   height: 3rem;
   border-radius: 6px;
+  margin-bottom: 1rem;
   > div {
     width: 50%;
     display: inline-flex;
@@ -56,7 +57,6 @@ const WeekTypeSelector = ({
 }: WeekTypeSelectorProps) => {
   return (
     <>
-      <h4>Min vecka:</h4>
       <WeekSelector isEven={isEven}>
         <div>
           <label htmlFor="even">Jämn</label>
