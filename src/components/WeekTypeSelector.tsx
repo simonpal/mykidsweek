@@ -44,6 +44,9 @@ const WeekSelector = styled.div<Partial<WeekTypeSelectorProps>>`
     left: ${({ isEven }) => (isEven ? "3px" : "calc(50% - 3px)")};
     background: ${({ theme }) => theme.colors.primary};
   }
+  @media screen and (max-width: 600px) {
+    max-width: 80%;
+  }
 `;
 
 interface WeekTypeSelectorProps {

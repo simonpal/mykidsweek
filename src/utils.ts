@@ -57,6 +57,15 @@ const weekDays: WeekDay[] = [
   "Friday",
   "Saturday",
 ];
+export const weekDaysLang = {
+  Sunday: "Söndag",
+  Monday: "Måndag",
+  Tuesday: "Tisdag",
+  Wednesday: "Onsdag",
+  Thursday: "Torsdag",
+  Friday: "Fredag",
+  Saturday: "Lördag",
+};
 
 interface Event {
   start: Date;

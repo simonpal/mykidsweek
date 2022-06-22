@@ -14,6 +14,9 @@ const DayButton = styled.button<ButtonProps>`
   padding: 0.5rem;
   border-radius: 2rem;
   border-width: 1px;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary};
+  }
 `;
 
 const DayWrapper = styled.div`
